@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 
 @Controller('dogs')
 export class DogsController {
@@ -45,7 +45,7 @@ export class DogsController {
     this.dogs[index] = { ...this.dogs[index], ...updatedDog };
     return this.dogs[index];
   }
-  @Put(':id')
+  @Delete(':id')
   deleteDog(@Param('id', ParseIntPipe) id: number) {
     const index = this.dogs.findIndex(dog => dog.id === id);
     if (index == -1) {
